@@ -6,7 +6,12 @@ export default function LoginPage() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-
+    if (email==""){
+      alert ("email tidak boleh kosong")
+    }
+    if (password==""){
+      alert ("password tidak boleh kosong")
+    }
     // Proses login di sini
   };
 
@@ -25,7 +30,7 @@ export default function LoginPage() {
         <label htmlFor="exampleInputEmail1" className="form-label">
           Masukan Email kamu disini
         </label>
-        <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={email} onChange={handleEmailChange} />
+        <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={email} onChange={(e) => handleEmailChange(e)} />
         <div id="emailHelp" className="form-text">
           Kami tidak akan membagikan email Anda kepada siapa pun.
         </div>
@@ -34,7 +39,7 @@ export default function LoginPage() {
         <label htmlFor="exampleInputPassword1" className="form-label">
           Kata Sandi
         </label>
-        <input type="password" className="form-control" id="exampleInputPassword1" value={password} onChange={handlePasswordChange} />
+        <input type="password" className="form-control" id="exampleInputPassword1" value={password} onChange={(e) => handlePasswordChange (e)} />
       </div>
       <div className="mb-3 form-check">
         <input type="checkbox" className="form-check-input" id="exampleCheck1" />
