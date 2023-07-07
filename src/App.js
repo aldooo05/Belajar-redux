@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import LoginPage from "./component/login.component";
+import RegisterPage from "./component/register.component";
+import "bootstrap/dist/css/bootstrap.css";
 
 function App() {
+  const [isRegister, setIsRegister] = useState(false);
+
+  const handleRegister = () => {
+    setIsRegister(!isRegister);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+        <div className="container" style={{ marginTop: "300px" }}>
+          {isRegister ? <RegisterPage /> : <LoginPage />}
+          <span onClick={handleRegister}>Tidak punya akun? Buat disini</span>
+        </div>
+      </div>
     </div>
   );
 }
