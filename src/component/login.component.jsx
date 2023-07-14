@@ -1,16 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  useEffect(() => {
+    // componentDidMount
+    console.log("Component did mount");
+
+    return () => {
+      // componentWillUnmount
+      console.log("Component will unmount");
+    };
+  }, []);
+
+  useEffect(() => {
+    // componentDidUpdate
+    console.log("Component did update");
+  }, [email, password]);
+
   const handleLogin = (e) => {
     e.preventDefault();
-    if (email==""){
-      alert ("email tidak boleh kosong")
+    if (email === "") {
+      alert("email tidak boleh kosong");
     }
-    if (password==""){
-      alert ("password tidak boleh kosong")
+    if (password === "") {
+      alert("password tidak boleh kosong");
     }
     // Proses login di sini
   };
@@ -39,7 +54,7 @@ export default function LoginPage() {
         <label htmlFor="exampleInputPassword1" className="form-label">
           Kata Sandi
         </label>
-        <input type="password" className="form-control" id="exampleInputPassword1" value={password} onChange={(e) => handlePasswordChange (e)} />
+        <input type="password" className="form-control" id="exampleInputPassword1" value={password} onChange={(e) => handlePasswordChange(e)} />
       </div>
       <div className="mb-3 form-check">
         <input type="checkbox" className="form-check-input" id="exampleCheck1" />
