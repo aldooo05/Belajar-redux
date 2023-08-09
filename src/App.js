@@ -1,26 +1,29 @@
-import React, { useState } from "react";
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import LoginPage from "./component/login.component";
-import RegisterPage from "./component/register.component";
+// import LoginPage from "./component/login.component";
+// import RegisterPage from "./component/register.component";
 import "bootstrap/dist/css/bootstrap.css";
-
+import Products from "./pages/products.page";
+import NavigationBar from "./component/navigation.coponent";
+import HomePage from "./pages/home.page";
+import UserPage from "./pages/user.page";
+import { routes } from "./constants/routes.constant";
 
 function App() {
-  const [isRegister, setIsRegister] = useState(false);
-
-  const handleRegister = () => {
-    setIsRegister(!isRegister);
-  };
-
   return (
-    <div className="App">
-      <div>
-        <div className="container" style={{ marginTop: "300px" }}>
-          {isRegister ? <RegisterPage /> : <LoginPage/>}
-          <span onClick={handleRegister}>Tidak punya akun? Buat disini</span>
-        </div>
-      </div>
-    </div>
+    <>
+      <BrowserRouter>
+      <NavigationBar />
+      <Routes>
+        {
+          routes.map(i=>
+            <Route{...i}/>
+            )
+        }
+      </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
